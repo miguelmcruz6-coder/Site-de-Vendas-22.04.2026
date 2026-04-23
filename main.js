@@ -1,5 +1,5 @@
 
-import { salvar, usuariosDatabase } from "./crud.js"
+import { salvar, usuariosDatabase, encontrarUsuario } from "./crud.js"
 
 
 const login = document.getElementById("login")
@@ -25,7 +25,7 @@ let logado = false
 async function logar(){
     const emailInput = document.getElementById("emailInput").value
     const senhaInput = document.getElementById("senhaInput").value
-    let salvamento = encontrarUsuario(emailInput, senhaInput)
+    let salvamento = await encontrarUsuario(emailInput, senhaInput)
 
     if(salvamento){
         alert("Logado com sucesso")
@@ -42,14 +42,14 @@ async function logar(){
 async function cadastrar(){
     const emailInput = document.getElementById("emailInput").value
     const senhaInput = document.getElementById("senhaInput").value
-    let salvamento = encontrarUsuario(emailInput, senhaInput)
+    let salvamento = await encontrarUsuario(emailInput, senhaInput)
 
     if(salvamento){
         alert("Usuário existente")
         emailInput.value = ""
         senhaInput.value = ""
     } else {
-        alert("Logado com sucesso")
+        alert("Cadastrado com sucesso")
     }
 }
 

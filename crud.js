@@ -43,10 +43,10 @@ async function encontrarUsuario(usuario, senha) {
   for (const key in data) {
     if (data[key].usuario === usuario && data[key].senha === senha) {
       alert("Usuário encontrado");
-      data = true;
+      encontrou = true;
     }
   }
-  return data;
+  return encontrou;
 }
 
 export { salvar, usuariosDatabase, encontrarUsuario };
