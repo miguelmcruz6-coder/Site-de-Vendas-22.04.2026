@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br ">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,34 +7,45 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header id="header">
+    <header>
       <div id="usuario">
-        <img src="" alt="" /> <!-- Foto de Perfil -->
+        <img src="" alt="" />
+        <!-- Foto de Perfil -->
         <p id="nomeUsuario"></p>
       </div>
-      <img src="" alt=""> <!-- Logo do SENAI -->
-      <ul>
-        <li></li>
+      <img src="" alt="" /> <!-- Logo do SENAI -->
+      <ul id="comprador">
+        <li class="abas">Carrinho</li>
+        <li class="abas" id="virarVendedor">Torne-se um Vendedor</li>
+      </ul>
+      <ul id="vendedor">
+        <li class="abas">Produtos</li>
+        <li class="abas">Pagamentos Realizados</li>
+        <li class="abas">Pagamentos Pendentes</li>
       </ul>
     </header>
-    <main>
+
+    <main class="mainIndex">
       <section id="login">
-        <p>E-mail:</p>
-        <input type="email" placeholder="email" id="emailInput" required />
-        <br />
-        <p>Senha:</p>
-        <input type="text" placeholder="senha" id="senhaInput" required />
-        <br />
+        <h1>Login</h1>
+        <h3>Bem vindo para o site de Alunos do Senai</h3>
+        <div class="inputs">
+          <p>E-mail:</p>
+          <input type="email" placeholder="email" id="emailInput" required />
+        </div>
+        <div class="inputs">
+          <p>Senha:</p>
+          <input type="password" placeholder="senha" id="emailInput" required />
+        </div>
         <div>
           <button id="cadastroBtn">Cadastro</button>
           <button id="loginBtn">Login</button>
         </div>
       </section>
-      <section id="inicio">
-        
-      </section>
+      <section id="inicio"></section>
+      <section id="inicio"></section>
     </main>
     <footer></footer>
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>

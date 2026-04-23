@@ -1,5 +1,4 @@
-import { analytics } from "./firebaseConfig";
-
+import { analytics, auth } from "./firebaseConfig";
 import {
   ref,
   set,
@@ -7,15 +6,28 @@ import {
   onValue,
   get,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const refUsuario = ref(analytics, "./usuarios");
 
-async function salvar(usuario, senha) { // Salvar usuários
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    console.log(userCredential.user);
+});
+
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    console.log(userCredential.user);
+});
+
+async function salvar(usuario, senha) {
+  // Salvar usuários
   const Usuario = push(refUsuario);
   try {
     await set(Usuario, {
       usuario: usuario,
       senha: senha,
+      estado: "comprador",
     });
     return true;
   } catch (error) {
@@ -38,15 +50,20 @@ function usuariosDatabase() {
 
 async function encontrarUsuario(usuario, senha) {
   let encontrou = false;
+  let vendedor = false;
   const data = usuariosDatabase();
 
   for (const key in data) {
     if (data[key].usuario === usuario && data[key].senha === senha) {
       alert("Usuário encontrado");
       encontrou = true;
+      if (data[key].estado === "vendedor") {
+        vendedor = true;
+      }
     }
   }
-  return encontrou;
+  let resposta = [encontrou, vendedor];
+  return resposta;
 }
 
 export { salvar, usuariosDatabase, encontrarUsuario };
