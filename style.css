@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+header {
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    display: none;
+}
+
+
+main {
+    display: flex;
+    height: 85vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#login {
+    display: flex;
+    height: 35vh;
+    width: 25vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    background-color: gray;
+    color: white;
+    border-radius: 100px;
+    margin-left: 10vh;
+}
