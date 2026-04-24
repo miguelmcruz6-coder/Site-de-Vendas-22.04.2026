@@ -1,62 +1,52 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-    background: linear-gradient(to right,
-            #000000 0%,
-            #ff0000 25%,
-            #2e2e2e 50%,
-            #ff0000 75%,
-            #000000 100%
-        );
+.body1 {
+  background: linear-gradient(
+    to right,
+    #000000 0%,
+    #ff0000 25%,
+    #2e2e2e 50%,
+    #ff0000 75%,
+    #000000 100%
+  );
 }
 
-header {
-    height: 10vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    display: none;
-}
-
-
-main {
-    display: flex;
-    height: 85vh;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
-
+.mainIndex {
+  display: flex;
+  height: 85vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
 }
 
 #login {
-    display: flex;
-    height: 35vh;
-    width: 25vw;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-    background-color: rgb(68, 68, 68);
-    color: white;
-    border-radius: 100px;
-    margin-left: 10vh;
-    transition: 0.5s ease;
+  display: flex;
+  height: 35vh;
+  width: 25vw;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(68, 68, 68);
+  color: white;
+  border-radius: 100px;
+  margin-left: 10vh;
+  transition: 0.5s ease;
 }
 
 #login:hover {
-    transform: scale(1.2);
-    background-color: orangered;
-    color: black;
+  transform: scale(1.2);
+  background-color: orangered;
+  color: black;
 }
 
-.inputs{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    margin-top: 2vh;
+.inputs {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-top: 2vh;
 }

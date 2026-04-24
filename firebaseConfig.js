@@ -1,13 +1,8 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
-import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// FirebaseConfig.js
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+import { getDatabase } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDGaYhT-D76zmg7bjgfkkMKlVt_ePaT4VQ",
   authDomain: "vendas---atividade-sorflecha.firebaseapp.com",
@@ -15,11 +10,10 @@ const firebaseConfig = {
   projectId: "vendas---atividade-sorflecha",
   storageBucket: "vendas---atividade-sorflecha.firebasestorage.app",
   messagingSenderId: "763881784181",
-  appId: "1:763881784181:web:7d5e21c4547dea21ce093c",
-  measurementId: "G-7T48YE0G58"
+  appId: "1:763881784181:web:7d5e21c4547dea21ce093c"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 export const auth = getAuth(app);
-export const  analytics = getDatabase(app);
+export const db = getDatabase(app);

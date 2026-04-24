@@ -1,69 +1,34 @@
-import { analytics, auth } from "./firebaseConfig";
+import { db } from "./firebaseConfig.js";
 import {
   ref,
   set,
-  push,
-  onValue,
   get,
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+  child,
+  update,
+} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
 
-const refUsuario = ref(analytics, "./usuarios");
-
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    console.log(userCredential.user);
-});
-
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    console.log(userCredential.user);
-});
-
-async function salvar(usuario, senha) {
-  // Salvar usuários
-  const Usuario = push(refUsuario);
-  try {
-    await set(Usuario, {
-      usuario: usuario,
-      senha: senha,
-      estado: "comprador",
-    });
-    return true;
-  } catch (error) {
-    console.error("Erro ao salvar usuário", error);
-    return false;
-  }
-}
-
-function usuariosDatabase() {
-  return new Promise((resolve) => {
-    onValue(
-      refUsuario,
-      (snapshot) => {
-        resolve(snapshot.val());
-      },
-      { onlyOnce: true }
-    );
+// SALVAR USUÁRIO NO DATABASE (após cadastro no Auth)
+export async function salvarUsuario(uid, email) {
+  await set(ref(db, "usuarios/" + uid), {
+    email: email,
+    tipo: "comprador",
   });
 }
 
-async function encontrarUsuario(usuario, senha) {
-  let encontrou = false;
-  let vendedor = false;
-  const data = usuariosDatabase();
+// BUSCAR DADOS DO USUÁRIO
+export async function buscarUsuario(uid) {
+  const snapshot = await get(child(ref(db), "usuarios/" + uid));
 
-  for (const key in data) {
-    if (data[key].usuario === usuario && data[key].senha === senha) {
-      alert("Usuário encontrado");
-      encontrou = true;
-      if (data[key].estado === "vendedor") {
-        vendedor = true;
-      }
-    }
+  if (snapshot.exists()) {
+    return snapshot.val();
+  } else {
+    return null;
   }
-  let resposta = [encontrou, vendedor];
-  return resposta;
 }
 
-export { salvar, usuariosDatabase, encontrarUsuario };
+// VIRAR VENDEDOR
+export async function virarVendedorDB(uid) {
+  await update(ref(db, "usuarios/" + uid), {
+    tipo: "vendedor",
+  });
+}
